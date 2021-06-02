@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 
 export default class Counter extends Component {
     state = {
-        count: 0,
-        tags: []
+        count: this.props.value,
+        tags:[]
     };
 
     styles = {
@@ -24,15 +24,16 @@ export default class Counter extends Component {
         this.setState( {count:this.state.count+1 });
     }
     
-    render() {
+    render() { 
+        console.log('props: ', this.value);
         let classes = "badge m-2 badge-";
         classes += this.state.count === 0 ? "warning" : "primary";
-        return (
+        return ( 
             <React.Fragment>
                 <span style={this.styles} className={classes}>
                     {this.formatCount()}
                 </span>
-                <button onClick = {this.handleIncreament} className="btn btn-secondary btn-sm">+Incse+</button>
+                <button onClick = {this.handleIncreament} className="btn btn-secondary">+Incse+</button>
                 <ul>
                     {this.state.tags.map(
                         tag =>
