@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Counter extends Component {
     state = {
         count: 0,
-        tags: ['tags1', 'tags2', 'tags3']
+        tags: []
     };
 
     styles = {
@@ -11,16 +11,28 @@ export default class Counter extends Component {
         fontWeight: "bold"
     };
 
+    // redertags(){
+    //     if (this.state.tags.length === 0){
+    //         return(
+    //             <p><h1>Aryansh is dumb!</h1></p>
+    //         )
+    //     }
+    //     else 
+    // }
+
+    handleIncreament = () => {
+        this.setState( {count:this.state.count+1 });
+    }
+    
     render() {
         let classes = "badge m-2 badge-";
         classes += this.state.count === 0 ? "warning" : "primary";
-
         return (
             <React.Fragment>
                 <span style={this.styles} className={classes}>
                     {this.formatCount()}
                 </span>
-                <button className="btn btn-secondary btn-sm">+Incse+</button>
+                <button onClick = {this.handleIncreament} className="btn btn-secondary btn-sm">+Incse+</button>
                 <ul>
                     {this.state.tags.map(
                         tag =>
@@ -34,7 +46,7 @@ export default class Counter extends Component {
     }
     formatCount() {
         const { count } = this.state;
-        return count === 0 ? 'Zeroooooo' : count;
+        return count === 0 ? 0 : count;
 
     }
 }
